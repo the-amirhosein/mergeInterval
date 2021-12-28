@@ -1,7 +1,6 @@
 package mergeInterval;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -9,10 +8,10 @@ public class MergeInterval {
 
     public static List<Interval> merge(List<Interval> intervals) {
 
-        if(intervals.size() == 0 || intervals.size() == 1)
+        if (intervals.size() == 0 || intervals.size() == 1)
             return intervals;
 
-        intervals.sort(new IntervalComparator());
+        intervals.sort(Comparator.comparingInt(Interval::getStart));
 
         Interval first = intervals.get(0);
         int start = first.getStart();
@@ -42,15 +41,10 @@ public class MergeInterval {
         intervals.add(new Interval(8, 12));
         intervals.add(new Interval(1, 2));
         intervals.add(new Interval(1, 9));
-        intervals.add(new Interval(15, 29));
-        System.out.println(merge(intervals));;
+        intervals.add(new Interval(25, 29));
+        intervals.add(new Interval(15, 26));
+        System.out.println(merge(intervals));
+
     }
 }
 
-class IntervalComparator implements Comparator<Interval>
-{
-    public int compare(Interval i1, Interval i2)
-    {
-        return i1.getStart() - i2.getStart();
-    }
-}
