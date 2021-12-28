@@ -1,3 +1,3 @@
 # mergeInterval
 
-merge overlapped interval in java
+merge overlapped intervals in java
